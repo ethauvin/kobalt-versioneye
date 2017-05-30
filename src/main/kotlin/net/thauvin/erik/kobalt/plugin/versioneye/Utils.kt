@@ -34,7 +34,7 @@ package net.thauvin.erik.kobalt.plugin.versioneye
 import com.beust.kobalt.AsciiArt
 import com.beust.kobalt.misc.log
 
-open class Utils {
+open class Utils private constructor() {
     companion object {
         // Non-colors failure
         fun alt(failed: Boolean): String {

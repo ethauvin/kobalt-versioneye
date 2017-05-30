@@ -374,8 +374,10 @@ class VersionEyePlugin @Inject constructor(val configActor: ConfigActor<VersionE
                 Utils.log(securityInfo, verbose)
 
                 // Show project url
-                val baseUrl = if (config.baseUrl.endsWith('/')) config.baseUrl else config.baseUrl + '/'
-                log(1, "  View more at: ${baseUrl}user/projects/$projectKey")
+                if (!config.temp) {
+                    val baseUrl = if (config.baseUrl.endsWith('/')) config.baseUrl else config.baseUrl + '/'
+                    log(1, "  View more at: ${baseUrl}user/projects/$projectKey")
+                }
             }
 
             // Task failure
