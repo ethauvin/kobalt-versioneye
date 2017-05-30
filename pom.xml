@@ -4,7 +4,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>net.thauvin.erik</groupId>
   <artifactId>kobalt-versioneye</artifactId>
-  <version>0.4.5</version>
+  <version>0.4.6</version>
   <name>kobalt-versioneye</name>
   <description>VersionEye plug-in for the Kobalt build system.</description>
   <url>https://github.com/ethauvin/kobalt-versioneye</url>
@@ -27,11 +27,6 @@
     <url>https://github.com/ethauvin/kobalt-versioneye</url>
   </scm>
   <dependencies>
-    <dependency>
-      <groupId>com.beust</groupId>
-      <artifactId>kobalt-plugin-api</artifactId>
-      <version>(0,]</version>
-    </dependency>
     <dependency>
       <groupId>com.squareup.okhttp3</groupId>
       <artifactId>logging-interceptor</artifactId>

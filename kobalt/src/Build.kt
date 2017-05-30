@@ -1,5 +1,6 @@
 import com.beust.kobalt.buildScript
 import com.beust.kobalt.file
+import com.beust.kobalt.localMaven
 import com.beust.kobalt.plugin.packaging.assemble
 import com.beust.kobalt.plugin.publish.autoGitTag
 import com.beust.kobalt.plugin.publish.bintray
@@ -12,7 +13,7 @@ import org.apache.maven.model.Model
 import org.apache.maven.model.Scm
 
 val bs = buildScript {
-    repos(file("K:/maven/repository"))
+    repos(localMaven())
     plugins("net.thauvin.erik:kobalt-maven-local:", "net.thauvin.erik:kobalt-versioneye:")
 }
 
@@ -24,7 +25,7 @@ val p = project {
     name = "kobalt-versioneye"
     group = "net.thauvin.erik"
     artifactId = name
-    version = "0.4.5"
+    version = "0.4.6"
 
     pom = Model().apply {
         description = "VersionEye plug-in for the Kobalt build system."
@@ -47,11 +48,11 @@ val p = project {
 
     dependencies {
         compileOnly("com.beust:$kobaltDependency:")
-        compile("com.squareup.okhttp3:logging-interceptor:jar:3.7.0")
+        compile("com.squareup.okhttp3:logging-interceptor:jar:3.8.0")
     }
 
     dependenciesTest {
-        compile("org.testng:testng:")
+        compile("org.testng:testng:6.11")
     }
 
     assemble {

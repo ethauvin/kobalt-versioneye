@@ -6,7 +6,7 @@ import net.thauvin.erik.kobalt.plugin.versioneye.*
 // ./kobaltw versionEye
 
 val bs = buildScript {
-    //repos(file("K:/maven/repository"))
+    repos(localMaven())
     plugins("net.thauvin.erik:kobalt-versioneye:")
 }
 
