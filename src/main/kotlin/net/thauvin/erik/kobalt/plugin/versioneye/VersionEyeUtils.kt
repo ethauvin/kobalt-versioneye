@@ -1,5 +1,5 @@
 /*
- * Utils.kt
+ * VersionEyeUtils.kt
  *
  * Copyright (c) 2016-2017, Erik C. Thauvin (erik@thauvin.net)
  * All rights reserved.
@@ -34,7 +34,7 @@ package net.thauvin.erik.kobalt.plugin.versioneye
 import com.beust.kobalt.AsciiArt
 import com.beust.kobalt.misc.log
 
-open class Utils private constructor() {
+open class VersionEyeUtils private constructor() {
     companion object {
         // Non-colors failure
         fun alt(failed: Boolean): String {

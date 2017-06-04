@@ -148,7 +148,7 @@ class VersionEyePlugin @Inject constructor(val configActor: ConfigActor<VersionE
                     // Don't create a new project
                     if (!System.getProperty(CREATE_PROPERTY, "true").toBoolean() && projectKey.isNullOrBlank()) {
                         log(1, "  Be sure to commit pom.xml, and import your project at:")
-                        log(1, Utils.yellow("\n\t${config.baseUrl}/projects/new\n", config.colors))
+                        log(1, VersionEyeUtils.yellow("\n\t${config.baseUrl}/projects/new\n", config.colors))
                         log(1, "  Then configure your project key.")
                         return TaskResult()
                     }
@@ -253,10 +253,10 @@ class VersionEyePlugin @Inject constructor(val configActor: ConfigActor<VersionE
             val sv_count = o.get("sv_count").asInt
 
             // Sets deps, license and security failures
-            val isFailDeps = Utils.isFail(config.failSet, Fail.dependenciesCheck) && out_number > 0
-            val isFailLicense = Utils.isFail(config.failSet, Fail.licensesCheck) && licenses_red > 0
-            val isFailUnknown = Utils.isFail(config.failSet, Fail.licensesUnknownCheck) && licenses_unknown > 0
-            val isFailSecurity = Utils.isFail(config.failSet, Fail.securityCheck) && sv_count > 0
+            val isFailDeps = VersionEyeUtils.isFail(config.failSet, Fail.dependenciesCheck) && out_number > 0
+            val isFailLicense = VersionEyeUtils.isFail(config.failSet, Fail.licensesCheck) && licenses_red > 0
+            val isFailUnknown = VersionEyeUtils.isFail(config.failSet, Fail.licensesUnknownCheck) && licenses_unknown > 0
+            val isFailSecurity = VersionEyeUtils.isFail(config.failSet, Fail.securityCheck) && sv_count > 0
 
             // Unknown dependencies
             var unknownDeps = 0
@@ -280,14 +280,14 @@ class VersionEyePlugin @Inject constructor(val configActor: ConfigActor<VersionE
                             depsInfo.append(lf)
                         }
                         unknownDeps++
-                        depsInfo.append(Utils.redLight("    - $depName -> UNKNOWN", unknownDeps, false, config.colors))
+                        depsInfo.append(VersionEyeUtils.redLight("    - $depName -> UNKNOWN", unknownDeps, false, config.colors))
                     } else if (dep.get("outdated").asBoolean) {
                         if (depsInfo.isNotEmpty()) {
                             depsInfo.append(lf)
                         }
-                        depsInfo.append(Utils.redLight("    - $depName -> "
+                        depsInfo.append(VersionEyeUtils.redLight("    - $depName -> "
                                 + curVer.asString, out_number, isFailDeps, config.colors)
-                                + Utils.alt(isFailDeps && !config.colors))
+                                + VersionEyeUtils.alt(isFailDeps && !config.colors))
                     }
 
                     // Parse licenses
@@ -318,9 +318,9 @@ class VersionEyePlugin @Inject constructor(val configActor: ConfigActor<VersionE
                         if (licensesInfo.isNotEmpty()) {
                             licensesInfo.append(lf)
                         }
-                        licensesInfo.append(Utils.redLight("    - $depName: $whitelisted whitelist "
-                                + Utils.plural("violation", whitelisted, "s"), whitelisted, isFailLicense, config.colors)
-                                + Utils.alt(isFailLicense && !config.colors))
+                        licensesInfo.append(VersionEyeUtils.redLight("    - $depName: $whitelisted whitelist "
+                                + VersionEyeUtils.plural("violation", whitelisted, "s"), whitelisted, isFailLicense, config.colors)
+                                + VersionEyeUtils.alt(isFailLicense && !config.colors))
                     }
 
                     // Unknowns
@@ -328,9 +328,9 @@ class VersionEyePlugin @Inject constructor(val configActor: ConfigActor<VersionE
                         if (licensesInfo.isNotEmpty()) {
                             licensesInfo.append(lf)
                         }
-                        licensesInfo.append(Utils.redLight("    - $depName: $unknowns "
-                                + Utils.plural("unknown license", unknowns, "s"), unknowns, isFailUnknown, config.colors)
-                                + Utils.alt(isFailUnknown && !config.colors))
+                        licensesInfo.append(VersionEyeUtils.redLight("    - $depName: $unknowns "
+                                + VersionEyeUtils.plural("unknown license", unknowns, "s"), unknowns, isFailUnknown, config.colors)
+                                + VersionEyeUtils.alt(isFailUnknown && !config.colors))
                     }
 
                     // Security vulnerabilities
@@ -341,9 +341,9 @@ class VersionEyePlugin @Inject constructor(val configActor: ConfigActor<VersionE
                         }
                         val count = security.asJsonArray.size()
 
-                        securityInfo.append(Utils.redLight("    - $depName: $count "
-                                + Utils.plural("known issue", count, "s"), count, isFailSecurity, config.colors)
-                                + Utils.alt(isFailSecurity && !config.colors))
+                        securityInfo.append(VersionEyeUtils.redLight("    - $depName: $count "
+                                + VersionEyeUtils.plural("known issue", count, "s"), count, isFailSecurity, config.colors)
+                                + VersionEyeUtils.alt(isFailSecurity && !config.colors))
                     }
                 }
 
@@ -352,26 +352,26 @@ class VersionEyePlugin @Inject constructor(val configActor: ConfigActor<VersionE
 
                 // Log dependencies check results
                 log(1, "  Dependencies: "
-                        + Utils.redLight(out_number, isFailDeps, config.colors) + " outdated. "
-                        + Utils.redLight(unknownDeps, false, config.colors) + " unknown. $dep_number total."
-                        + Utils.alt(isFailDeps && !config.colors))
-                Utils.log(depsInfo, verbose)
+                        + VersionEyeUtils.redLight(out_number, isFailDeps, config.colors) + " outdated. "
+                        + VersionEyeUtils.redLight(unknownDeps, false, config.colors) + " unknown. $dep_number total."
+                        + VersionEyeUtils.alt(isFailDeps && !config.colors))
+                VersionEyeUtils.log(depsInfo, verbose)
 
                 // Log licenses check results
                 log(1, "  Licenses: "
-                        + Utils.redLight(licenses_red, isFailLicense, config.colors) + " whitelist. "
-                        + Utils.redLight(licenses_unknown, isFailUnknown, config.colors)
-                        + Utils.plural(" unknown", licenses_unknown, "s.", ".")
-                        + Utils.alt((isFailLicense || isFailUnknown) && !config.colors))
-                Utils.log(licensesInfo, verbose)
+                        + VersionEyeUtils.redLight(licenses_red, isFailLicense, config.colors) + " whitelist. "
+                        + VersionEyeUtils.redLight(licenses_unknown, isFailUnknown, config.colors)
+                        + VersionEyeUtils.plural(" unknown", licenses_unknown, "s.", ".")
+                        + VersionEyeUtils.alt((isFailLicense || isFailUnknown) && !config.colors))
+                VersionEyeUtils.log(licensesInfo, verbose)
 
                 // Log security check results
                 log(1, "  Security: "
-                        + Utils.redLight(sv_count, isFailSecurity, config.colors)
+                        + VersionEyeUtils.redLight(sv_count, isFailSecurity, config.colors)
                         + ' '
-                        + Utils.plural("vulnerabilit", sv_count, "ies.", "y.")
-                        + Utils.alt(isFailSecurity && !config.colors))
-                Utils.log(securityInfo, verbose)
+                        + VersionEyeUtils.plural("vulnerabilit", sv_count, "ies.", "y.")
+                        + VersionEyeUtils.alt(isFailSecurity && !config.colors))
+                VersionEyeUtils.log(securityInfo, verbose)
 
                 // Show project url
                 if (!config.temp) {

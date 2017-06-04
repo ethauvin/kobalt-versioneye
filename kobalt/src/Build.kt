@@ -1,5 +1,4 @@
 import com.beust.kobalt.buildScript
-import com.beust.kobalt.file
 import com.beust.kobalt.localMaven
 import com.beust.kobalt.plugin.packaging.assemble
 import com.beust.kobalt.plugin.publish.autoGitTag
@@ -48,6 +47,7 @@ val p = project {
 
     dependencies {
         compileOnly("com.beust:$kobaltDependency:")
+        compile("org.jetbrains.kotlin:kotlin-stdlib:1.1.2-4")
         compile("com.squareup.okhttp3:logging-interceptor:jar:3.8.0")
     }
 
@@ -67,6 +67,7 @@ val p = project {
 
     autoGitTag {
         enabled = true
+        push = false
         message = "Version $version"
     }
 

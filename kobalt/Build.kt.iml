@@ -28,13 +28,13 @@
       </library>
     </orderEntry>
     <orderEntry type="module-library">
-      <library name="Kobalt: com.beust.kobalt:kobalt:jar:1.0.78">
+      <library name="Kobalt: com.beust.kobalt:kobalt:jar:1.0.87">
         <CLASSES>
-          <root url="jar://$USER_HOME$/.kobalt/wrapper/dist/kobalt-1.0.78/kobalt/wrapper/kobalt-1.0.78.jar!/" />
+          <root url="jar://$USER_HOME$/.kobalt/wrapper/dist/kobalt-1.0.87/kobalt/wrapper/kobalt-1.0.87.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES>
-          <root url="jar://$USER_HOME$/.kobalt/wrapper/dist/kobalt-1.0.78/kobalt/wrapper/kobalt-1.0.78-sources.jar!/" />
+          <root url="jar://$USER_HOME$/.kobalt/wrapper/dist/kobalt-1.0.87/kobalt/wrapper/kobalt-1.0.87-sources.jar!/" />
         </SOURCES>
       </library>
     </orderEntry>
