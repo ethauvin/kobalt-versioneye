@@ -2,7 +2,7 @@
 
 [![License (3-Clause BSD)](https://img.shields.io/badge/license-BSD%203--Clause-blue.svg?style=flat-square)](http://opensource.org/licenses/BSD-3-Clause) [![release](http://github-release-version.herokuapp.com/github/ethauvin/kobalt-versioneye/release.svg?style=flat)](https://github.com/ethauvin/kobalt-versioneye/releases/latest) [![Dependency Status](https://www.versioneye.com/user/projects/58ff729f6ac171425cd00acf/badge.svg?style=flat-square)](https://www.versioneye.com/user/projects/58ff729f6ac171425cd00acf) [![Build Status](https://travis-ci.org/ethauvin/kobalt-versioneye.svg?branch=master)](https://travis-ci.org/ethauvin/kobalt-versioneye) [![CircleCI](https://circleci.com/gh/ethauvin/kobalt-versioneye/tree/master.svg?style=shield)](https://circleci.com/gh/ethauvin/kobalt-versioneye/tree/master) [![Download](https://api.bintray.com/packages/ethauvin/maven/kobalt-versioneye/images/download.svg) ](https://bintray.com/ethauvin/maven/kobalt-versioneye/_latestVersion)
 
-[![VersionEye Logo](src/site/images/VersionEyeLogo.png)](https://www.versioneye.com)
+[![VersionEye Logo](https://github.com/ethauvin/kobalt-versioneye/raw/master/src/site/images/VersionEyeLogo.png)](https://www.versioneye.com)
 
 The plug-in will create and update projects on [VersionEye](https://www.versioneye.com/), a service that notifies you about outdated dependencies, security vulnerabilities and license violations.
 
@@ -30,7 +30,7 @@ val p = project {
 
 To create or update your project on VersionEye, you will need an API key. If you are [signed up](https://www.versioneye.com/signup), you can find your API Key [here](https://www.versioneye.com/settings/api):
 
-[![VersionEye API Key](src/site/images/VersionEyeApiKey.png)](https://www.versioneye.com/settings/api)
+[![VersionEye API Key](https://github.com/ethauvin/kobalt-versioneye/raw/master/src/site/images/VersionEyeApiKey.png)](https://www.versioneye.com/settings/api)
 
 To create your project on VersionEye simply use your API Key as follows
 
