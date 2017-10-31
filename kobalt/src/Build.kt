@@ -47,12 +47,12 @@ val p = project {
 
     dependencies {
         compileOnly("com.beust:$kobaltDependency:")
-        compile("org.jetbrains.kotlin:kotlin-stdlib:1.1.2-4")
-        compile("com.squareup.okhttp3:logging-interceptor:jar:3.8.0")
+        compile("org.jetbrains.kotlin:kotlin-stdlib:1.1.51")
+        compile("com.squareup.okhttp3:logging-interceptor:jar:3.9.0")
     }
 
     dependenciesTest {
-        compile("org.testng:testng:6.11")
+        compile("org.testng:testng:6.12")
     }
 
     assemble {
